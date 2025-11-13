@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+/* Theme variables (light by default). ThemeProvider toggles the `dark` class on <html>. */
+:root {
+	/* Light mode - Modern Blue/Purple palette */
+	--bg: #f8fafc;
+	--text: #0f172a;
+	--muted: #64748b;
+	--accent: #3b82f6;
+	--accent-light: #dbeafe;
+	--nav-bg: #ffffff;
+	--nav-text: #0f172a;
+	--nav-border: #e2e8f0;
+	--header-bg: #ffffff;
+	--header-text: #0f172a;
+	--header-border: #e2e8f0;
+	--footer-bg: #f1f5f9;
+	--footer-text: #475569;
+	--footer-border: #e2e8f0;
+	--card-bg: #ffffff;
+	--card-border: #e2e8f0;
+	--card-hover: #f8fafc;
+	--shadow: 0 1px 2px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.05);
+	--btn-bg: #3b82f6;
+	--btn-text: #ffffff;
+	--btn-hover: #2563eb;
+	--input-bg: #ffffff;
+	--input-border: #cbd5e1;
+}
+
+.dark {
+	/* Dark mode - Deep blue/slate palette */
+	--bg: #0f172a;
+	--text: #f1f5f9;
+	--muted: #94a3b8;
+	--accent: #60a5fa;
+	--accent-light: #1e3a8a;
+	--nav-bg: #1e293b;
+	--nav-text: #f1f5f9;
+	--nav-border: #334155;
+	--header-bg: #1e293b;
+	--header-text: #f1f5f9;
+	--header-border: #334155;
+	--footer-bg: #0f172a;
+	--footer-text: #cbd5e1;
+	--footer-border: #334155;
+	--card-bg: #1e293b;
+	--card-border: #334155;
+	--card-hover: #0f172a;
+	--shadow: 0 1px 2px rgba(0,0,0,0.3);
+	--btn-bg: #3b82f6;
+	--btn-text: #ffffff;
+	--btn-hover: #60a5fa;
+	--input-bg: #0f172a;
+	--input-border: #475569;
+}
+
+html, body {
+	background-color: var(--bg);
+	color: var(--text);
+	height: 100%;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* small helper classes */
+.muted { color: var(--muted); }
+
+/* Layout helpers */
+.container {
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 1rem 1.25rem;
+	width: 100%;
+}
+
+/* Navbar/Header/Footer are already using vars; add spacing helpers */
+.site-header { position: sticky; top: 0; z-index: 40; border-bottom: 1px solid var(--nav-border); }
+
+/* Home page */
+.home-container { padding: 2rem 0; }
+.home-header { border-bottom: 1px solid var(--header-border); padding-bottom: 1rem; margin-bottom: 1.5rem; }
+.home-title { font-size: 2rem; margin: 0 0 .25rem 0; color: var(--text); font-weight: 700; }
+.home-subtitle { color: var(--muted); margin: 0; }
+.home-section { margin-bottom: 1.5rem; }
+.home-card { background: var(--card-bg); border-radius: .5rem; padding: 1rem; border: 1px solid var(--card-border); box-shadow: var(--shadow); transition: background 0.2s ease, border-color 0.2s ease; }
+.home-card:hover { background: var(--card-hover); }
+
+/* Tasks page */
+.tasks-container { padding: 1.25rem 0; }
+.tasks-form { display: flex; gap: .5rem; align-items: center; }
+.tasks-input { flex: 1; padding: .6rem .75rem; font-size: 1rem; border: 1px solid var(--input-border); border-radius: .375rem; background: var(--input-bg); color: var(--text); transition: border-color 0.2s ease; }
+.tasks-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
+.btn { padding: .6rem .9rem; border-radius: .375rem; border: none; background: var(--btn-bg); color: var(--btn-text); cursor: pointer; font-weight: 600; transition: background 0.2s ease, transform 0.15s ease; }
+.btn:hover { background: var(--btn-hover); transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.tasks-list { list-style: none; padding: 0; margin-top: .75rem; }
+.task-item { display: flex; align-items: center; gap: .5rem; padding: .6rem .5rem; border-bottom: 1px solid var(--card-border); }
+.task-title { flex: 1; color: var(--text); }
+.task-title.completed { text-decoration: line-through; opacity: .6; color: var(--muted); }
+.small-btn { padding: .35rem .5rem; font-size: .85rem; cursor: pointer; border-radius: .25rem; border: 1px solid var(--card-border); background: transparent; color: var(--text); transition: background 0.2s ease, color 0.2s ease; }
+.small-btn:hover { background: var(--accent-light); color: var(--accent); }
+.tasks-footer { display: flex; justify-content: space-between; align-items: center; margin-top: .75rem; }
+.task-filters { display: flex; gap: .5rem; }
+
+/* Responsive rules */
+@media (max-width: 768px) {
+	.home-title { font-size: 1.5rem; }
+	.container { padding: 1rem; }
+	.tasks-form { flex-direction: column; align-items: stretch; }
+	.tasks-input { width: 100%; }
+	.task-item { flex-direction: column; align-items: flex-start; }
+	.tasks-footer { flex-direction: column; gap: .5rem; align-items: flex-start; }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+	.home-title { font-size: 1.75rem; }
+}
+
